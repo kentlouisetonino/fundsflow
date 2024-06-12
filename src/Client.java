@@ -7,18 +7,20 @@ public class Client {
     Scanner sc = new Scanner(System.in);
     int option;
 
-    // Show the app description and options.
-    Client.addNewline();
-    Client.displayMainMenu();
+    while (true) {
+      // Show the app description and options.
+      Client.addNewline();
+      Client.displayMainMenu();
 
-    // Ask the option.
-    Client.addNewline();
-    System.out.print("\tInput option: ");
-    option = sc.nextInt();
+      // Ask the option.
+      Client.addNewline();
+      System.out.print("\tInput option: ");
+      option = sc.nextInt();
 
-    // Testing.
-    Client.addNewline();
-    System.out.println(option);
+      // Testing.
+      Client.addNewline();
+      System.out.println(option);
+    }
   }
 
   // Display the options.
