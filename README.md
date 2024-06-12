@@ -13,6 +13,8 @@
 
 ## Local Development
 
+> - This project might be more compatible with OpenJDK 8 & 11.
+
 > - You can run the tool either below.
 
 ```sh
