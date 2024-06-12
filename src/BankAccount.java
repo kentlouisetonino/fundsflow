@@ -18,7 +18,7 @@ public class BankAccount {
 
   // Accessor methods.
   public String getAccountName() { return accountName; }
-  public String getAddress() { return getAddress; }
+  public String getAddress() { return address; }
   public String getBirthday() { return birthday; }
   public String getContactNumber() { return contactNumber; }
 
@@ -28,8 +28,8 @@ public class BankAccount {
   }
   public void setAddress(String address) { this.address = address; }
   public void setBirthday(String birthday) { this.birthday = birthday; }
-  public void setAccountNumber(String accountNumber) {
-    this.accountNumber = accountNumber;
+  public void setContactNumber(String contactNumber) {
+    this.contactNumber = contactNumber;
   }
 
   // Get the client details.
@@ -37,6 +37,6 @@ public class BankAccount {
     System.out.println("Account Name: " + accountName);
     System.out.println("Account Address: " + address);
     System.out.println("Account Birthday: " + birthday);
-    System.out.println("Account Contact Number: " + accountNumber);
+    System.out.println("Account Contact Number: " + contactNumber);
   }
 }

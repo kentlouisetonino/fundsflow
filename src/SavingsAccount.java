@@ -7,11 +7,16 @@ public class SavingsAccount extends BankAccount {
   public double interestRate;
 
   // Constructor.
-  public SavingsAccount(int accountNumber, double balance,
-                        double interestRate) {
+  public SavingsAccount(String accountName, String address, String birthday,
+                        String contactNumber, int accountNumber,
+                        double balance) {
+    // Instantiate the bank information.
+    super(accountName, address, birthday, contactNumber);
+
+    // Assign values for the native savings account variables.
     this.accountNumber = accountNumber;
     this.balance = balance;
-    this.interestRate = interestRate;
+    this.interestRate = balance * (0.05);
   }
 
   // Accessor methods.
