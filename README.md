@@ -6,7 +6,7 @@
 
 <br />
 
-> - A simple banking system CLI tool.
+> - A simple banking system school project.
 
 <br />
 <br />
