@@ -1,2 +1,3 @@
-# fundsflow
-A simple banking management tool.
+## Description
+
+> - A simple banking management tool.
