@@ -6,4 +6,4 @@
 
 <br />
 
-> - A simple banking management tool.
+> - A practice project banking system tool.
