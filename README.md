@@ -6,7 +6,7 @@
 
 <br />
 
-> - A practice project banking system tool.
+> - A simple banking system CLI tool.
 
 <br />
 <br />
