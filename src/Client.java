@@ -10,7 +10,7 @@ public class Client {
   // Display the options.
   static void displayMainMenu() {
     System.out.println("\t-------------------------------");
-    System.out.println("\t\tJBank Main Menu");
+    System.out.println("\t\tBank Main Menu");
     System.out.println("\t-------------------------------");
     Client.addNewline();
 
