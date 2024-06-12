@@ -11,7 +11,7 @@
 <br />
 <br />
 
-## Commands
+## Local Development
 
 > - You can run the tool either below.
 
