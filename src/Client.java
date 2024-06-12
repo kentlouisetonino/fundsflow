@@ -1,5 +1,6 @@
 package src;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Client {
@@ -12,10 +13,15 @@ public class Client {
       Client.addNewline();
       Client.displayMainMenu();
 
-      // Ask the option.
-      Client.addNewline();
-      System.out.print("\tInput option: ");
-      option = sc.nextInt();
+      try {
+        // Ask the option.
+        Client.addNewline();
+        System.out.print("\tInput option: ");
+        option = sc.nextInt();
+      } catch (InputMismatchException e) {
+        sc.next();
+        continue;
+      }
 
       // Testing.
       Client.addNewline();
