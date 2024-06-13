@@ -1,5 +1,6 @@
 package src;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
@@ -20,8 +21,13 @@ public class Client {
       // Testing.
       System.out.println(sAccountList);
 
-      // Show the app description and options.
+      // Cleanup the terminal.
+      Client.clearTerminal();
       Client.addNewline();
+      Client.addNewline();
+      Client.addNewline();
+
+      // Show the app description and options.
       Client.displayMainMenu();
 
       // Show error description.
@@ -89,15 +95,21 @@ public class Client {
 
     while (true) {
       try {
+        // Cleanup the terminal.
+        Client.clearTerminal();
+        Client.addNewline();
+        Client.addNewline();
+        Client.addNewline();
+
         // Display the description.
         System.out.println("\t-------------------------------");
         System.out.println("\t\tCreate New Account");
         System.out.println("\t-------------------------------");
-        Client.addNewline();
 
         // Display error message;
         if (hasError) {
-          System.out.println("\tInvalid input. Please try again.");
+          Client.addNewline();
+          System.out.println("\t* Invalid input. Please try again. *");
         }
 
         // Generate account number.
@@ -144,4 +156,21 @@ public class Client {
 
   // Method to add a new line.
   static void addNewline() { System.out.println(); }
+
+  // Clean up the screen.
+  static void clearTerminal() {
+    try {
+      String os = System.getProperty("os.name").toLowerCase();
+
+      if (os.contains("windows")) {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+      } else {
+        // For Linux, macOS, and other Unix-like systems.
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+      }
+    } catch (IOException | InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
 }
