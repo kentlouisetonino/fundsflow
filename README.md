@@ -6,12 +6,14 @@
 
 <br />
 
-> - A simple banking system CLI tool.
+> - A simple banking system school project.
 
 <br />
 <br />
 
-## Commands
+## Local Development
+
+> - This project might be more compatible with OpenJDK 8 & 11.
 
 > - You can run the tool either below.
 
