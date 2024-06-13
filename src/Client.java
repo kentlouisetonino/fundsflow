@@ -69,8 +69,15 @@ public class Client {
 
   // New account handler.
   static SavingsAccount option1() {
+    // Input handler.
     Scanner sc = new Scanner(System.in);
+
+    // For generating random number.
     Random random = new Random();
+    String generateNumber = String.format("%04d", random.nextInt(10000));
+
+    // Check error checker.
+    boolean hasError = false;
 
     // Necessary variables in creating a new account.
     String accountName;
@@ -78,37 +85,54 @@ public class Client {
     String birthday;
     String contactNumber;
     double balance;
-
-    // Display the description.
-    System.out.println("\t-------------------------------");
-    System.out.println("\t\tCreate New Account");
-    System.out.println("\t-------------------------------");
-    Client.addNewline();
-
-    // Generate account number.
-    String generateNumber = String.format("%04d", random.nextInt(10000));
     int accountNumber = Integer.valueOf(generateNumber);
-    System.out.println("\tAccount Number: " + accountNumber);
 
-    // Ask the name.
-    System.out.print("\tAccount Name: ");
-    accountName = sc.nextLine();
+    while (true) {
+      try {
+        // Display the description.
+        System.out.println("\t-------------------------------");
+        System.out.println("\t\tCreate New Account");
+        System.out.println("\t-------------------------------");
+        Client.addNewline();
 
-    // Ask the address.
-    System.out.print("\tAccount Address: ");
-    address = sc.nextLine();
+        // Display error message;
+        if (hasError) {
+          System.out.println("\tInvalid input. Please try again.");
+        }
 
-    // Ask the birthday.
-    System.out.print("\tBirthday (yyyy/MM/DD): ");
-    birthday = sc.nextLine();
+        // Generate account number.
+        Client.addNewline();
+        System.out.println("\tAccount Number: " + accountNumber);
 
-    // Ask the contact number.
-    System.out.print("\tContact Number: ");
-    contactNumber = sc.nextLine();
+        // Ask the name.
+        System.out.print("\tAccount Name: ");
+        accountName = sc.nextLine();
 
-    // Ask the balance amount.
-    System.out.print("\tBalance: ");
-    balance = sc.nextDouble();
+        // Ask the address.
+        System.out.print("\tAccount Address: ");
+        address = sc.nextLine();
+
+        // Ask the birthday.
+        System.out.print("\tBirthday (yyyy/MM/DD): ");
+        birthday = sc.nextLine();
+
+        // Ask the contact number.
+        System.out.print("\tContact Number: ");
+        contactNumber = sc.nextLine();
+
+        // Ask the balance amount.
+        System.out.print("\tBalance: ");
+        balance = sc.nextDouble();
+
+        // If no errors break the loop.
+        hasError = false;
+        break;
+      } catch (InputMismatchException e) {
+        hasError = true;
+        sc.nextLine();
+        continue;
+      }
+    }
 
     // Create an instance of a savings account.
     SavingsAccount sAccount = new SavingsAccount(
