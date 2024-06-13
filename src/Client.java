@@ -18,14 +18,14 @@ public class Client {
     boolean invalidMainInput = false;
 
     while (true) {
-      // Testing.
-      System.out.println(sAccountList);
-
       // Cleanup the terminal.
       Client.clearTerminal();
       Client.addNewline();
       Client.addNewline();
       Client.addNewline();
+
+      // Testing.
+      System.out.println(sAccountList);
 
       // Show the app description and options.
       Client.displayMainMenu();
