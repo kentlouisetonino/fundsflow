@@ -82,15 +82,16 @@ public class Client {
     Random random = new Random();
     String generateNumber = String.format("%04d", random.nextInt(10000));
 
-    // Check error checker.
+    // Error checker.
     boolean hasError = false;
+    boolean invalidInitialDeposit = false;
 
     // Necessary variables in creating a new account.
     String accountName;
     String address;
     String birthday;
     String contactNumber;
-    double balance;
+    double initialDeposit;
     int accountNumber = Integer.valueOf(generateNumber);
 
     while (true) {
@@ -110,6 +111,12 @@ public class Client {
         if (hasError) {
           Client.addNewline();
           System.out.println("\t* Invalid input. Please try again. *");
+        }
+
+        // Error message for deposit problem.
+        if (invalidInitialDeposit) {
+          Client.addNewline();
+          System.out.println("\t* Deposit should be >= to 5000. *");
         }
 
         // Generate account number.
@@ -132,12 +139,19 @@ public class Client {
         System.out.print("\tContact Number: ");
         contactNumber = sc.nextLine();
 
-        // Ask the balance amount.
-        System.out.print("\tBalance: ");
-        balance = sc.nextDouble();
+        // Ask the deposit amount.
+        System.out.print("\tInitial Deposit: ");
+        initialDeposit = sc.nextDouble();
+
+        if (initialDeposit < 5000) {
+          invalidInitialDeposit = true;
+          sc.nextLine();
+          continue;
+        }
 
         // If no errors break the loop.
         hasError = false;
+        invalidInitialDeposit = false;
         break;
       } catch (InputMismatchException e) {
         hasError = true;
@@ -147,8 +161,9 @@ public class Client {
     }
 
     // Create an instance of a savings account.
-    SavingsAccount sAccount = new SavingsAccount(
-        accountName, address, birthday, contactNumber, accountNumber, balance);
+    SavingsAccount sAccount =
+        new SavingsAccount(accountName, address, birthday, contactNumber,
+                           accountNumber, initialDeposit);
 
     // Return value.
     return sAccount;
