@@ -180,9 +180,13 @@ public class Client {
 
     // Error checker.
     boolean hasError = false;
+    boolean notFound = false;
+
+    // Check if want inquire other account.
+    String tryAgain;
 
     // Variables needed.
-    Scanner savingsAccount;
+    SavingsAccount savingsAccount = null;
     int accountNumber;
 
     while (true) {
@@ -208,6 +212,43 @@ public class Client {
         Client.addNewline();
         System.out.print("\tEnter account number: ");
         accountNumber = sc.nextInt();
+
+        // Check the account.
+        for (int i = 0; i < sAccounts.size(); i++) {
+          if (sAccounts.get(i).getAccountNumber() == accountNumber) {
+            savingsAccount = sAccounts.get(i);
+          }
+        }
+
+        // Check if savings account is null.
+        if (savingsAccount == null) {
+          notFound = true;
+          hasError = false;
+          sc.nextLine();
+          continue;
+        }
+
+        // If not null, display the savings account information.
+        Client.addNewline();
+        System.out.println("\tAccount Name: " +
+                           savingsAccount.getAccountName());
+        System.out.println("\tBalance: " + savingsAccount.balanceInquiry());
+
+        // Ask if want to check another account.
+        Client.addNewline();
+        System.out.print("\tCheck different account (y/n): ");
+        tryAgain = sc.next();
+
+        // Handle the response.
+        if (tryAgain.contains("y")) {
+          notFound = false;
+          hasError = false;
+          sc.nextLine();
+          continue;
+        } else {
+          break;
+        }
+
       } catch (InputMismatchException e) {
         hasError = true;
         sc.nextLine();
