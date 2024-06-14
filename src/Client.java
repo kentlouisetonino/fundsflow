@@ -24,8 +24,9 @@ public class Client {
       Client.addNewline();
       Client.addNewline();
 
-      // Testing.
-      System.out.println(sAccountList);
+      for (int i = 0; i < sAccountList.size(); i++) {
+        System.out.println(sAccountList.get(i).getAccountNumber());
+      }
 
       // Show the app description and options.
       Client.displayMainMenu();
@@ -51,7 +52,11 @@ public class Client {
       // Update the view.
       Client.addNewline();
       if (mainOption == 1) {
-        sAccountList.add(Client.option1());
+        SavingsAccount addedAccount = Client.option1();
+        sAccountList.add(addedAccount);
+      }
+      if (mainOption == 2) {
+        Client.option2(sAccountList);
       }
     }
   }
@@ -167,6 +172,48 @@ public class Client {
 
     // Return value.
     return sAccount;
+  }
+
+  static void option2(ArrayList<SavingsAccount> sAccounts) {
+    // Input handler.
+    Scanner sc = new Scanner(System.in);
+
+    // Error checker.
+    boolean hasError = false;
+
+    // Variables needed.
+    Scanner savingsAccount;
+    int accountNumber;
+
+    while (true) {
+      try {
+        // Cleanup the terminal.
+        Client.clearTerminal();
+        Client.addNewline();
+        Client.addNewline();
+        Client.addNewline();
+
+        // Display the description.
+        System.out.println("\t-------------------------------");
+        System.out.println("\t\tBalance Inquiry");
+        System.out.println("\t-------------------------------");
+
+        // Check if there is an error in previous input.
+        if (hasError) {
+          Client.addNewline();
+          System.out.println("\t* Invalid account number. *");
+        }
+
+        // Ask the account number.
+        Client.addNewline();
+        System.out.print("\tEnter account number: ");
+        accountNumber = sc.nextInt();
+      } catch (InputMismatchException e) {
+        hasError = true;
+        sc.nextLine();
+        continue;
+      }
+    }
   }
 
   // Method to add a new line.

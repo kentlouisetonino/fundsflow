@@ -33,8 +33,8 @@ public class SavingsAccount extends BankAccount {
     this.interestRate = interestRate;
   }
 
-  // TODO: Inquire for the current balance.
-  public double balanceInquiry() { return balance; }
+  // Inquire for the current balance.
+  public double balanceInquiry() { return balance + interestRate; }
 
   // TODO: Process the withdrawal.
   public void withdraw() {}
