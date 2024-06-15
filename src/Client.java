@@ -64,6 +64,9 @@ public class Client {
       if (mainOption == 2) {
         Client.option2(sAccountList);
       }
+      if (mainOption == 7) {
+        break;
+      }
     }
   }
 
@@ -214,6 +217,12 @@ public class Client {
         System.out.println("\t\tBalance Inquiry");
         System.out.println("\t-------------------------------");
 
+        // Check if account number exist.
+        if (notFound) {
+          Client.addNewline();
+          System.out.println("\t* Account number not found. *");
+        }
+
         // Check if there is an error in previous input.
         if (hasError) {
           Client.addNewline();
@@ -236,6 +245,7 @@ public class Client {
         if (savingsAccount == null) {
           notFound = true;
           hasError = false;
+          accountNumber = 0;
           sc.nextLine();
           continue;
         }
@@ -255,6 +265,8 @@ public class Client {
         if (tryAgain.contains("y")) {
           notFound = false;
           hasError = false;
+          accountNumber = 0;
+          savingsAccount = null;
           sc.nextLine();
           continue;
         } else {
