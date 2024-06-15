@@ -255,10 +255,10 @@ public class Client {
         }
 
         // If not null, display the savings account information.
-        Client.addNewline();
-        System.out.println("\tAccount Name: " +
-                           savingsAccount.getAccountName());
-        System.out.println("\tBalance: " + savingsAccount.balanceInquiry());
+        String accountName = savingsAccount.getAccountName();
+        double currentBalance = savingsAccount.balanceInquiry();
+        System.out.println("\tAccount Name: " + accountName);
+        System.out.println("\tCurrent Balance: " + currentBalance);
 
         // Ask if want to check another account.
         Client.addNewline();
@@ -299,6 +299,7 @@ public class Client {
     // Variables needed.
     SavingsAccount savingsAccount = null;
     int accountNumber;
+    double deposit;
 
     while (true) {
       try {
@@ -348,15 +349,27 @@ public class Client {
           continue;
         }
 
+        // Ask the deposit amount.
+        System.out.print("\tDeposit amount: ");
+        deposit = sc.nextDouble();
+
+        // Save the new balance.
+        // Save the new interest rate.
+        double currentBalance = savingsAccount.getBalance();
+        double newBalance = currentBalance + deposit;
+        double newInterestRate = newBalance * 0.05;
+        savingsAccount.setBalance(newBalance);
+        savingsAccount.setInterestRate(newInterestRate);
+
         // If not null, display the savings account information.
-        Client.addNewline();
-        System.out.println("\tAccount Name: " +
-                           savingsAccount.getAccountName());
-        System.out.println("\tBalance: " + savingsAccount.balanceInquiry());
+        String accountName = savingsAccount.getAccountName();
+        double balanceInquiry = savingsAccount.balanceInquiry();
+        System.out.println("\tAccount Name: " + accountName);
+        System.out.println("\tNew Balance: " + balanceInquiry);
 
         // Ask if want to check another account.
         Client.addNewline();
-        System.out.print("\tCheck different account (y/n): ");
+        System.out.print("\tDeposit to a different account (y/n): ");
         tryAgain = sc.next();
 
         // Handle the response.

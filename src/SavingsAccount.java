@@ -29,7 +29,7 @@ public class SavingsAccount extends BankAccount {
     this.accountNumber = accountNumber;
   }
   public void setBalance(double balance) { this.balance = balance; }
-  public void interestRate(double interestRate) {
+  public void setInterestRate(double interestRate) {
     this.interestRate = interestRate;
   }
 
