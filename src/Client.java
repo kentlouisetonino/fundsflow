@@ -65,6 +65,7 @@ public class Client {
         Client.option2(sAccountList);
       }
       if (mainOption == 7) {
+        Client.clearTerminal();
         break;
       }
     }
