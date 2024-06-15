@@ -74,29 +74,6 @@ public class Client {
     }
   }
 
-  // Display the options.
-  static void displayMainMenu(boolean hasAccounts) {
-    System.out.println("\t-------------------------------");
-    System.out.println("\t\tBank Main Menu");
-    System.out.println("\t-------------------------------");
-    Client.addNewline();
-
-    // Options.
-    System.out.println("\t[ 1 ] New Account");
-
-    // Show only if accounts array is not empty.
-    if (hasAccounts) {
-      System.out.println("\t[ 2 ] Balance Inquiry");
-      System.out.println("\t[ 3 ] Deposit");
-      System.out.println("\t[ 4 ] Withdraw");
-      System.out.println("\t[ 5 ] Client Profile");
-      System.out.println("\t[ 6 ] Close Account");
-      System.out.println("\t[ 7 ] Exit");
-    } else {
-      System.out.println("\t[ 2 ] Exit");
-    }
-  }
-
   // New account handler.
   static SavingsAccount option1() {
     // Input handler.
@@ -389,6 +366,29 @@ public class Client {
         sc.nextLine();
         continue;
       }
+    }
+  }
+
+  // Display the options.
+  static void displayMainMenu(boolean hasAccounts) {
+    System.out.println("\t-------------------------------");
+    System.out.println("\t\tBank Main Menu");
+    System.out.println("\t-------------------------------");
+    Client.addNewline();
+
+    // Options.
+    System.out.println("\t[ 1 ] New Account");
+
+    // Show only if accounts array is not empty.
+    if (hasAccounts) {
+      System.out.println("\t[ 2 ] Balance Inquiry");
+      System.out.println("\t[ 3 ] Deposit");
+      System.out.println("\t[ 4 ] Withdraw");
+      System.out.println("\t[ 5 ] Client Profile");
+      System.out.println("\t[ 6 ] Close Account");
+      System.out.println("\t[ 7 ] Exit");
+    } else {
+      System.out.println("\t[ 2 ] Exit");
     }
   }
 
