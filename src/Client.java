@@ -413,7 +413,7 @@ public class Client {
         // Display the description.
         System.out.println("\t-------------------------------");
         System.out.println("\t\t"
-                           + "     "
+                           + "    "
                            + "Withdraw");
         System.out.println("\t-------------------------------");
 
@@ -432,14 +432,14 @@ public class Client {
         // If amount withdrawn is invalid.
         if (invalidAmount) {
           Client.addNewline();
-          System.out.println("\t* Invalid withdraw (amount >= 100). *");
+          System.out.println("\t* Invalid (amount >= 100). *");
         }
 
         // Check if invalid final balance.
         // Should be greater than or equal to 5000.
         if (invalidBalance) {
           Client.addNewline();
-          System.out.println("\t* Invalid witdraw (balance >= 5000). *");
+          System.out.println("\t* Invalid (balance >= 5000). *");
         }
 
         // Ask the account number.
@@ -487,8 +487,8 @@ public class Client {
         if (newBalance < 5000) {
           notFound = false;
           hasError = false;
-          invalidAmount = true;
-          invalidBalance = false;
+          invalidAmount = false;
+          invalidBalance = true;
           accountNumber = 0;
           sc.nextLine();
           continue;
