@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Client {
   public static void main(String args[]) {
+    // Handler for inputs.
     Scanner mainOptionSc = new Scanner(System.in);
 
     // Handle the save accounts.
@@ -24,6 +25,7 @@ public class Client {
       Client.addNewline();
       Client.addNewline();
 
+      // TODO: Remove this testing once features are completed.
       for (int i = 0; i < sAccountList.size(); i++) {
         System.out.println(sAccountList.get(i).getAccountNumber());
       }
