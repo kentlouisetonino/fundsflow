@@ -57,18 +57,28 @@ public class Client {
         break;
       }
 
-      // Update the view.
-      Client.addNewline();
+      // Add new account.
       if (mainOption == 1) {
         SavingsAccount addedAccount = Client.option1();
         sAccountList.add(addedAccount);
       }
+
+      // Deposit money.
       if (mainOption == 2) {
         Client.option2(sAccountList);
       }
+
+      // Balance inquiry.
       if (mainOption == 3) {
         Client.option3(sAccountList);
       }
+
+      // Withdraw money.
+      if (mainOption == 4) {
+        Client.option4(sAccountList);
+      }
+
+      // Exit application.
       if (mainOption == 7) {
         Client.clearTerminal();
         break;
@@ -172,6 +182,7 @@ public class Client {
     return sAccount;
   }
 
+  // This method will handle the adding of new account.
   static void option2(ArrayList<SavingsAccount> sAccounts) {
     // Input handler.
     Scanner sc = new Scanner(System.in);
@@ -264,6 +275,7 @@ public class Client {
     }
   }
 
+  // This method will handle the deposit.
   static void option3(ArrayList<SavingsAccount> sAccounts) {
     // Input handler.
     Scanner sc = new Scanner(System.in);
@@ -348,7 +360,7 @@ public class Client {
 
         // Ask if want to check another account.
         Client.addNewline();
-        System.out.print("\tDeposit to a different account (y/n): ");
+        System.out.print("\tDeposit again (y/n): ");
         tryAgain = sc.next();
 
         // Handle the response.
@@ -365,6 +377,160 @@ public class Client {
 
       } catch (InputMismatchException e) {
         hasError = true;
+        sc.nextLine();
+        continue;
+      }
+    }
+  }
+
+  // This method will handle the withdraw.
+  static void option4(ArrayList<SavingsAccount> sAccounts) {
+    // Input handler.
+    Scanner sc = new Scanner(System.in);
+
+    // Error checker.
+    boolean hasError = false;
+    boolean notFound = false;
+    boolean invalidAmount = false;
+    boolean invalidBalance = false;
+
+    // Check if want inquire other account.
+    String tryAgain;
+
+    // Variables needed.
+    SavingsAccount savingsAccount = null;
+    int accountNumber;
+    double withdraw;
+
+    while (true) {
+      try {
+        // Cleanup the terminal.
+        Client.clearTerminal();
+        Client.addNewline();
+        Client.addNewline();
+        Client.addNewline();
+
+        // Display the description.
+        System.out.println("\t-------------------------------");
+        System.out.println("\t\t"
+                           + "     "
+                           + "Withdraw");
+        System.out.println("\t-------------------------------");
+
+        // Check if account number exist.
+        if (notFound) {
+          Client.addNewline();
+          System.out.println("\t* Account number not found. *");
+        }
+
+        // Check if there is an error in previous input.
+        if (hasError) {
+          Client.addNewline();
+          System.out.println("\t* Invalid account number. *");
+        }
+
+        // If amount withdrawn is invalid.
+        if (invalidAmount) {
+          Client.addNewline();
+          System.out.println("\t* Invalid withdraw (amount >= 100). *");
+        }
+
+        // Check if invalid final balance.
+        // Should be greater than or equal to 5000.
+        if (invalidBalance) {
+          Client.addNewline();
+          System.out.println("\t* Invalid witdraw (balance >= 5000). *");
+        }
+
+        // Ask the account number.
+        Client.addNewline();
+        System.out.print("\tEnter account number: ");
+        accountNumber = sc.nextInt();
+
+        // Check the account.
+        for (int i = 0; i < sAccounts.size(); i++) {
+          if (sAccounts.get(i).getAccountNumber() == accountNumber) {
+            savingsAccount = sAccounts.get(i);
+          }
+        }
+
+        // Check if savings account is null.
+        if (savingsAccount == null) {
+          notFound = true;
+          hasError = false;
+          invalidAmount = false;
+          invalidBalance = false;
+          accountNumber = 0;
+          sc.nextLine();
+          continue;
+        }
+
+        // Ask the deposit amount.
+        System.out.print("\tWithdraw amount: ");
+        withdraw = sc.nextDouble();
+
+        // Make sure the withdrawn amount is not less than 100.
+        if (withdraw < 100) {
+          notFound = false;
+          hasError = false;
+          invalidAmount = true;
+          invalidBalance = false;
+          accountNumber = 0;
+          sc.nextLine();
+          continue;
+        }
+
+        // Double check the maintaining balance.
+        // Should be not less than 5000.
+        double currentBalance = savingsAccount.getBalance();
+        double newBalance = currentBalance - withdraw;
+        if (newBalance < 5000) {
+          notFound = false;
+          hasError = false;
+          invalidAmount = true;
+          invalidBalance = false;
+          accountNumber = 0;
+          sc.nextLine();
+          continue;
+        }
+
+        // Save the new balance.
+        // Save the new interest rate.
+        double newInterestRate = newBalance * 0.05;
+        savingsAccount.setBalance(newBalance);
+        savingsAccount.setInterestRate(newInterestRate);
+
+        // If not null, display the savings account information.
+        String accountName = savingsAccount.getAccountName();
+        double balanceInquiry = savingsAccount.balanceInquiry();
+        System.out.println("\tAccount Name: " + accountName);
+        System.out.println("\tNew Balance: " + balanceInquiry);
+
+        // Ask if want to check another account.
+        Client.addNewline();
+        System.out.print("\tWithdraw amount again (y/n): ");
+        tryAgain = sc.next();
+
+        // Handle the response.
+        if (tryAgain.contains("y")) {
+          notFound = false;
+          hasError = false;
+          invalidAmount = false;
+          invalidBalance = false;
+          accountNumber = 0;
+          savingsAccount = null;
+          sc.nextLine();
+          continue;
+        } else {
+          break;
+        }
+      } catch (InputMismatchException e) {
+        notFound = false;
+        hasError = true;
+        invalidAmount = false;
+        invalidBalance = false;
+        accountNumber = 0;
+        savingsAccount = null;
         sc.nextLine();
         continue;
       }
