@@ -78,6 +78,10 @@ public class Client {
         Client.option4(sAccountList);
       }
 
+      if (mainOption == 5) {
+        Client.option5(sAccountList);
+      }
+
       // Exit application.
       if (mainOption == 7) {
         Client.clearTerminal();
@@ -529,6 +533,107 @@ public class Client {
         hasError = true;
         invalidAmount = false;
         invalidBalance = false;
+        accountNumber = 0;
+        savingsAccount = null;
+        sc.nextLine();
+        continue;
+      }
+    }
+  }
+
+  // This method will handle the client profile.
+  static void option5(ArrayList<SavingsAccount> sAccounts) {
+    // Input handler.
+    Scanner sc = new Scanner(System.in);
+
+    // Error checker.
+    boolean hasError = false;
+    boolean notFound = false;
+
+    // Check if want inquire other account.
+    String tryAgain;
+
+    // Variables needed.
+    SavingsAccount savingsAccount = null;
+    int accountNumber;
+
+    while (true) {
+      try {
+        // Cleanup the terminal.
+        Client.clearTerminal();
+        Client.addNewline();
+        Client.addNewline();
+        Client.addNewline();
+
+        // Display the description.
+        System.out.println("\t-------------------------------");
+        System.out.println("\t\tClient Profile");
+        System.out.println("\t-------------------------------");
+
+        // Check if account number exist.
+        if (notFound) {
+          Client.addNewline();
+          System.out.println("\t* Account number not found. *");
+        }
+
+        // Check if there is an error in previous input.
+        if (hasError) {
+          Client.addNewline();
+          System.out.println("\t* Invalid account number. *");
+        }
+
+        // Ask the account number.
+        Client.addNewline();
+        System.out.print("\tEnter account number: ");
+        accountNumber = sc.nextInt();
+
+        // Check the account.
+        for (int i = 0; i < sAccounts.size(); i++) {
+          if (sAccounts.get(i).getAccountNumber() == accountNumber) {
+            savingsAccount = sAccounts.get(i);
+          }
+        }
+
+        // Check if savings account is null.
+        if (savingsAccount == null) {
+          notFound = true;
+          hasError = false;
+          accountNumber = 0;
+          sc.nextLine();
+          continue;
+        }
+
+        // If not null, display the savings account information.
+        String accountName = savingsAccount.getAccountName();
+        String address = savingsAccount.getAddress();
+        String birthday = savingsAccount.getBirthday();
+        String contactNumber = savingsAccount.getContactNumber();
+        double balanceInquiry = savingsAccount.balanceInquiry();
+        System.out.println("\tAccount Name: " + accountName);
+        System.out.println("\tAddress: " + address);
+        System.out.println("\tBirthday: " + birthday);
+        System.out.println("\tContact Number: " + contactNumber);
+        System.out.println("\tBalance: " + balanceInquiry);
+
+        // Ask if want to check another account.
+        Client.addNewline();
+        System.out.print("\tCheck different account (y/n): ");
+        tryAgain = sc.next();
+
+        // Handle the response.
+        if (tryAgain.contains("y")) {
+          notFound = false;
+          hasError = false;
+          accountNumber = 0;
+          savingsAccount = null;
+          sc.nextLine();
+          continue;
+        } else {
+          break;
+        }
+      } catch (InputMismatchException e) {
+        notFound = false;
+        hasError = true;
         accountNumber = 0;
         savingsAccount = null;
         sc.nextLine();
