@@ -8,7 +8,7 @@
 
 > - A simple banking system school project.
 
-> - If you want to check how I made this project from scratch, you can
+> - If you want to check how I made this project from, you can <br />
     [view](https://www.youtube.com/playlist?list=PLPks-uiro_XKuPVEsgQM5XXZmphvifTVO) it here. Spoiler alert, it's pretty boring.
 
 
