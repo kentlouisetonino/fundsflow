@@ -8,10 +8,6 @@
 
 > - A simple banking system school project.
 
-> - If you want to check how I made this project, you can <br />
-    [view](https://www.youtube.com/playlist?list=PLPks-uiro_XKuPVEsgQM5XXZmphvifTVO) it here. Spoiler alert: it's monotonous and boring.
-
-
 <br />
 <br />
 
