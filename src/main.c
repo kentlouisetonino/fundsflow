@@ -1,4 +1,5 @@
 #include "./displays/app_description.h"
+#include "./displays/app_options.h"
 #include "./displays/clear_terminal.h"
 #include "./displays/escape_sequence.h"
 #include <stdio.h>
@@ -11,6 +12,11 @@ int main(void) {
 
   // Show CLI tool description.
   app_description();
+  add_new_line();
+  add_new_line();
+
+  // Show CLI tool options.
+  app_options();
   add_new_line();
   add_new_line();
 
