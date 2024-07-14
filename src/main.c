@@ -10,13 +10,18 @@
 int main(void) {
   int main_option = 0;
   bank_account accounts[10] = {};
-  int has_error = 0;
 
   while (1) {
     // Clear the terminal.
     clear_terminal();
     add_new_line();
     add_new_line();
+
+    // Testing the accounts.
+    for (int i = 0; i < 10; i++) {
+      printf("account number: %d", accounts[i].account_number);
+      add_new_line();
+    }
 
     // Show CLI tool description.
     app_description();
@@ -35,8 +40,16 @@ int main(void) {
       clear_terminal();
       add_new_line();
       add_new_line();
-      has_error = account_create(accounts);
-      add_new_line();
+
+      // Add the new account in array.
+      for (int i = 0; i < 10; i++) {
+        if (accounts[i].account_number == 0) {
+          accounts[i] = account_create();
+          break;
+        }
+      }
+
+      continue;
     }
 
     break;

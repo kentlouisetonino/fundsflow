@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int account_create(bank_account accounts[]) {
+bank_account account_create() {
   // Required account information.
   int account_number = 1000 + (rand() % 9000);
   char *account_name = NULL;
@@ -114,5 +114,11 @@ int account_create(bank_account accounts[]) {
     break;
   }
 
-  return 1;
+  // Create a new object value based on bank account struct.
+  bank_account new_account = {
+      account_number,   account_name,   account_address,
+      account_birthday, contact_number, deposit,
+  };
+
+  return new_account;
 }
