@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-bank_account account_create() {
+bank_account account_create(void) {
   // Required account information.
   int account_number = 1000 + (rand() % 9000);
   char *account_name = NULL;

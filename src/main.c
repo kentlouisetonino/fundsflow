@@ -9,7 +9,7 @@
 
 int main(void) {
   int main_option = 0;
-  bank_account accounts[10] = {};
+  bank_account accounts[50] = {};
 
   while (1) {
     // Clear the terminal.
@@ -18,7 +18,7 @@ int main(void) {
     add_new_line();
 
     // Testing the accounts.
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 50; i++) {
       printf("account number: %d", accounts[i].account_number);
       add_new_line();
     }
@@ -36,13 +36,14 @@ int main(void) {
     // Ask the input.
     main_option = main_option_input();
 
+    // Create a new account.
     if (main_option == 1) {
       clear_terminal();
       add_new_line();
       add_new_line();
 
       // Add the new account in array.
-      for (int i = 0; i < 10; i++) {
+      for (int i = 0; i < 50; i++) {
         if (accounts[i].account_number == 0) {
           accounts[i] = account_create();
           break;
