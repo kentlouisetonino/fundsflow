@@ -8,9 +8,9 @@
 bank_account get_new_account(void) {
   // Required account information.
   int account_number = 1000 + (rand() % 9000);
-  char *account_name = NULL;
-  char *account_address = NULL;
-  char *account_birthday = NULL;
+  char *account_name = malloc(sizeof(char) * 100);
+  char *account_address = malloc(sizeof(char) * 100);
+  char *account_birthday = malloc(sizeof(char) * 100);
   int contact_number;
   double deposit;
 
