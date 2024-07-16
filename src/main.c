@@ -1,4 +1,5 @@
 #include "./accounts/account_type.h"
+#include "./accounts/get_balance_inquiry.h"
 #include "./accounts/get_new_account.h"
 #include "./displays/app_description.h"
 #include "./displays/app_options.h"
@@ -38,18 +39,19 @@ int main(void) {
 
     // Create a new account.
     if (main_option == 1) {
-      clear_terminal();
-      add_new_line();
-      add_new_line();
-
-      // Add the new account in array.
       for (int i = 0; i < 50; i++) {
         if (accounts[i].account_number == 0) {
-          accounts[i] = get_new_acount();
+          accounts[i] = get_new_account();
           break;
         }
       }
 
+      continue;
+    }
+
+    // Get the balance inquiry.
+    if (main_option == 2) {
+      get_balance_inquiry(accounts);
       continue;
     }
 
