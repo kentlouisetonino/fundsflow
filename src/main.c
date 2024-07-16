@@ -1,5 +1,5 @@
-#include "./accounts/account_create.h"
 #include "./accounts/account_type.h"
+#include "./accounts/get_new_account.h"
 #include "./displays/app_description.h"
 #include "./displays/app_options.h"
 #include "./displays/clear_terminal.h"
@@ -45,7 +45,7 @@ int main(void) {
       // Add the new account in array.
       for (int i = 0; i < 50; i++) {
         if (accounts[i].account_number == 0) {
-          accounts[i] = account_create();
+          accounts[i] = get_new_acount();
           break;
         }
       }
