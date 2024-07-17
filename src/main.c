@@ -18,13 +18,6 @@ int main(void) {
     add_new_line();
     add_new_line();
 
-    // Testing the accounts.
-    for (int i = 0; i < 50; i++) {
-      printf("account number: %d", accounts[i].account_number);
-      add_new_line();
-      printf("account name: %s", accounts[i].account_name);
-    }
-
     // Show CLI tool description.
     app_description();
     add_new_line();
