@@ -4,10 +4,12 @@
 #include "./account_type.h"
 #include "stdlib.h"
 
-void option_balance_inquiry(bank_account accounts[]) {
+void option_deposit(bank_account *accounts) {
   int account_number = 0;
   int invalid_account_number = 0;
+  int invalid_deposit_amount = 0;
   int try_again = 0;
+  int deposit = 0;
   bank_account account;
   char *garbage_buffer = malloc(sizeof(char) * 100);
 
@@ -24,7 +26,8 @@ void option_balance_inquiry(bank_account accounts[]) {
     add_new_line();
     add_new_tab();
     add_new_tab();
-    printf("%s     Balance Inquiry%s", GREEN, RESET);
+    add_new_tab();
+    printf("%s Deposit%s", GREEN, RESET);
     add_new_line();
     add_new_line();
     add_new_tab();
@@ -48,6 +51,32 @@ void option_balance_inquiry(bank_account accounts[]) {
       if (try_again == 1) {
         account_number = 0;
         invalid_account_number = 0;
+        invalid_deposit_amount = 0;
+        deposit = 0;
+        continue;
+      } else {
+        break;
+      }
+    }
+
+    // Display the error message if deposit amount is invalid.
+    if (invalid_deposit_amount) {
+      add_new_tab();
+      printf("%sInvalid deposit amount (> 0).%s", RED, RESET);
+      add_new_line();
+      add_new_line();
+
+      // Ask user to try again.
+      add_new_tab();
+      printf("Try again (1-yes/0-no)?: ");
+      scanf("%d", &try_again);
+      fgets(garbage_buffer, 100, stdin);
+
+      if (try_again == 1) {
+        account_number = 0;
+        invalid_account_number = 0;
+        invalid_deposit_amount = 0;
+        deposit = 0;
         continue;
       } else {
         break;
@@ -60,9 +89,12 @@ void option_balance_inquiry(bank_account accounts[]) {
     scanf("%d", &account_number);
     fgets(garbage_buffer, 100, stdin);
 
+    // Check if account number is valid.
     if (account_number == 0) {
       invalid_account_number = 1;
+      invalid_account_number = 0;
       account_number = 0;
+      deposit = 0;
       continue;
     }
 
@@ -77,9 +109,33 @@ void option_balance_inquiry(bank_account accounts[]) {
       }
     }
 
+    // Check again if valid account number.
     if (invalid_account_number) {
       account_number = 0;
       continue;
+    }
+
+    // Ask the deposit amount.
+    add_new_tab();
+    printf("Enter the deposit amount: ");
+    scanf("%d", &deposit);
+    fgets(garbage_buffer, 100, stdin);
+    if (deposit == 0) {
+      invalid_account_number = 0;
+      invalid_deposit_amount = 1;
+      deposit = 0;
+      continue;
+    }
+
+    // Check if account number exist.
+    for (int i = 0; i < 50; i++) {
+      if (accounts[i].account_number == account_number) {
+        bank_account updated_account = accounts[i];
+        updated_account.balance = updated_account.balance + deposit;
+        accounts[i] = updated_account;
+        account = updated_account;
+        break;
+      }
     }
 
     // Display other account information.
@@ -89,7 +145,7 @@ void option_balance_inquiry(bank_account accounts[]) {
     add_new_line();
     double current_balance = account.balance + (account.balance * 0.05);
     add_new_tab();
-    printf("%sCurrent Balance:%s %s%lf%s", BLUE, RESET, GREEN, current_balance,
+    printf("%sNew Balance:%s %s%lf%s", BLUE, RESET, GREEN, current_balance,
            RESET);
     add_new_line();
     add_new_line();
