@@ -13,7 +13,7 @@
 
 > - Bash commands to run the CLI tool.
 
-```c
+```bash
 // Running the FundsFlow.
 chmod +x run.sh
 ./run.sh
