@@ -1,3 +1,10 @@
-Client:
-	javac -d bin src/Client.java
-	java -cp bin src.Client
+build:
+	gcc -g -o bin/fundsflow src/main.c
+
+fundsflow:
+	make build
+	bin/fundsflow
+
+debug:
+	make build
+	gdb bin/fundsflow
