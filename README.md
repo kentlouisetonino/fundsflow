@@ -14,11 +14,11 @@
 > - Bash commands to run the CLI tool.
 
 ```bash
-// Running the FundsFlow.
+# Running the FundsFlow.
 chmod +x run.sh
 ./run.sh
 
-// Running the FundsFlow with GDB.
+# Running the FundsFlow with GDB.
 chmod +x run-debug.sh
 ./run-debug.sh
 ```
