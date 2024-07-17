@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-bank_account get_new_account(void) {
+bank_account option_new_account(void) {
   // Required account information.
   int account_number = 1000 + (rand() % 9000);
   char *account_name = malloc(sizeof(char) * 100);

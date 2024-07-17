@@ -4,7 +4,7 @@
 #include "./account_type.h"
 #include "stdlib.h"
 
-void get_balance_inquiry(bank_account accounts[]) {
+void option_balance_inquiry(bank_account accounts[]) {
   int account_number = 0;
   int invalid_account_number = 0;
   int try_again = 0;
