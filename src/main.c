@@ -19,6 +19,14 @@ int main(void) {
     add_new_line();
     add_new_line();
 
+    // Testing.
+    for (int i = 0; i < 5; i++) {
+      printf("%d", accounts[i].account_number);
+
+      add_new_line();
+    }
+    add_new_line();
+
     // Show CLI tool description.
     app_description();
     add_new_line();
@@ -34,13 +42,7 @@ int main(void) {
 
     // Create a new account.
     if (main_option == 1) {
-      for (int i = 0; i < 50; i++) {
-        if (accounts[i].account_number == 0) {
-          accounts[i] = option_new_account();
-          break;
-        }
-      }
-
+      option_new_account(accounts);
       continue;
     }
 

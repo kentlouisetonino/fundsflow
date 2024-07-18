@@ -2,6 +2,6 @@
 #define OPTION_NEW_ACCOUNT_H
 #include "./option_new_account.c"
 
-extern bank_account option_new_account(void);
+extern void option_new_account(bank_account *accounts);
 
 #endif
