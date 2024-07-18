@@ -2,6 +2,7 @@
 #include "./accounts/option_balance_inquiry.h"
 #include "./accounts/option_deposit.h"
 #include "./accounts/option_new_account.h"
+#include "./accounts/option_withdraw.h"
 #include "./displays/app_description.h"
 #include "./displays/app_options.h"
 #include "./displays/clear_terminal.h"
@@ -17,14 +18,6 @@ int main(void) {
     // Clear the terminal.
     clear_terminal();
     add_new_line();
-    add_new_line();
-
-    // Testing.
-    for (int i = 0; i < 5; i++) {
-      printf("%d", accounts[i].account_number);
-
-      add_new_line();
-    }
     add_new_line();
 
     // Show CLI tool description.
@@ -55,6 +48,12 @@ int main(void) {
     // Deposit to account.
     if (main_option == 3) {
       option_deposit(accounts);
+      continue;
+    }
+
+    // Withdraw amount from the account.
+    if (main_option == 4) {
+      option_withdraw(accounts);
       continue;
     }
 
