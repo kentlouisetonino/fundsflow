@@ -36,6 +36,7 @@ void app_options(int accounts_empty) {
     add_new_line();
   }
 
+  // Exit.
   add_new_tab();
   printf("[ %d ] Exit", exit);
 }
