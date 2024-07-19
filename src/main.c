@@ -1,5 +1,6 @@
 #include "./accounts/account_type.h"
 #include "./accounts/option_balance_inquiry.h"
+#include "./accounts/option_client_profile.h"
 #include "./accounts/option_deposit.h"
 #include "./accounts/option_new_account.h"
 #include "./accounts/option_withdraw.h"
@@ -13,6 +14,7 @@
 int main(void) {
   int main_option = 0;
   bank_account accounts[50] = {};
+  int accounts_empty = 1;
 
   while (1) {
     // Clear the terminal.
@@ -26,7 +28,8 @@ int main(void) {
     add_new_line();
 
     // Show CLI tool options.
-    app_options();
+    accounts_empty = accounts[0].account_number == 0;
+    app_options(accounts_empty);
     add_new_line();
     add_new_line();
 
@@ -36,24 +39,31 @@ int main(void) {
     // Create a new account.
     if (main_option == 1) {
       option_new_account(accounts);
+      accounts_empty = 0;
       continue;
     }
 
     // Get the balance inquiry.
-    if (main_option == 2) {
+    if (!accounts_empty && main_option == 2) {
       option_balance_inquiry(accounts);
       continue;
     }
 
     // Deposit to account.
-    if (main_option == 3) {
+    if (!accounts_empty && main_option == 3) {
       option_deposit(accounts);
       continue;
     }
 
     // Withdraw amount from the account.
-    if (main_option == 4) {
+    if (!accounts_empty && main_option == 4) {
       option_withdraw(accounts);
+      continue;
+    }
+
+    // Client profile of the account.
+    if (!accounts_empty && main_option == 5) {
+      option_client_profile(accounts);
       continue;
     }
 
