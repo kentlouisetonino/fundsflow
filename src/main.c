@@ -1,6 +1,7 @@
 #include "./accounts/account_type.h"
 #include "./accounts/option_balance_inquiry.h"
 #include "./accounts/option_client_profile.h"
+#include "./accounts/option_close_account.h"
 #include "./accounts/option_deposit.h"
 #include "./accounts/option_new_account.h"
 #include "./accounts/option_withdraw.h"
@@ -90,6 +91,13 @@ int main(void) {
     // Client profile of the account.
     if (!accounts_empty && main_option == 5) {
       option_client_profile(accounts);
+      invalid_option = 0;
+      continue;
+    }
+
+    // Remoove account.
+    if (!accounts_empty && main_option == 6) {
+      option_close_account(accounts);
       invalid_option = 0;
       continue;
     }
