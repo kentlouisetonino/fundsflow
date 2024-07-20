@@ -1,0 +1,33 @@
+# Metadata of the CLI tool.
+name: fundsflow
+version: "1.0.0"
+summary: CLI Tool
+description: |
+  A CLI tool banking system school project.
+
+# Specifies the stability level of the Snap package.
+grade: stable
+
+# The runtine enviroment and foundational libraries that the Snap package will use.
+base: core22
+
+# Determines how much access your Snap has to the system its running.
+# This runs in a sandbox with only the necessary access to system resources.
+confinement: strict
+
+# Defines the commands.
+apps:
+  fundsflow:
+    command: bin/fundsflow
+
+# Defines a set of files and instructions that make up the final Snap.
+parts:
+  fundsflow:
+    # Files to be included.
+    source: .
+    # Directly copy files from the source directory into the snap package.
+    # This does not perform any building or compilation.
+    plugin: dump
+    # Mapping to specify how files from the source directory should be placed within the snap.
+    organize:
+      "fundsflow": "/usr/local/bin/fundsflow"
