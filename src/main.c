@@ -46,6 +46,12 @@ int main(void) {
     // Ask the input.
     main_option = main_option_input();
 
+    if (main_option == 0) {
+      // If option are invalid.
+      invalid_option = 1;
+      continue;
+    }
+
     // Handle the exit option.
     if ((accounts_empty && main_option == 2) ||
         (!accounts_empty && main_option == 7)) {
@@ -87,10 +93,6 @@ int main(void) {
       invalid_option = 0;
       continue;
     }
-
-    // If option are invalid.
-    invalid_option = 1;
-    main_option = 0;
   }
 
   add_new_line();
