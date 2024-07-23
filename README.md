@@ -22,3 +22,21 @@ chmod +x run.sh
 chmod +x run-debug.sh
 ./run-debug.sh
 ```
+
+<br />
+<br />
+
+
+
+## $\textnormal{Installation}$
+
+```sh
+# If already installed.
+sudo snap refresh fundsflow
+
+# If not yet installed.
+sudo snap install fundsflow
+
+# If want to remove.
+sudo snap remove fundsflow
+```
