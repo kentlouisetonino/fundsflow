@@ -1,6 +1,5 @@
 #include "../displays/ansi_color.h"
 #include "../displays/escape_sequence.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 int main_option_input(void) {
