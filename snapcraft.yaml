@@ -1,6 +1,6 @@
 # Metadata of the CLI tool.
 name: fundsflow
-version: "1.0.0"
+version: "2.0.1"
 summary: CLI Tool
 description: |
   A CLI tool banking system school project.
