@@ -14,6 +14,10 @@
 > - Bash commands to run the CLI tool.
 
 ```bash
+# Build the executable file.
+chmod +x run-build.sh
+./run-build.sh
+
 # Running the FundsFlow.
 chmod +x run.sh
 ./run.sh
