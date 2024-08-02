@@ -1,8 +1,7 @@
 #include "../displays/ansi_color.h"
 #include "../displays/clear_terminal.h"
 #include "../displays/escape_sequence.h"
-#include "./account_type.h"
-#include <stdlib.h>
+#include "account_type.h"
 
 void option_close_account(bank_account *accounts) {
   int account_number = 0;

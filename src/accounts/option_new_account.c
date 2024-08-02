@@ -1,9 +1,7 @@
 #include "../displays/ansi_color.h"
 #include "../displays/clear_terminal.h"
 #include "../displays/escape_sequence.h"
-#include "./account_type.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "account_type.h"
 
 void option_new_account(bank_account *accounts) {
   // Required account information.
