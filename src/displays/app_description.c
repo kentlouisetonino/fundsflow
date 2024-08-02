@@ -1,6 +1,5 @@
-#include "./ansi_color.h"
-#include "./escape_sequence.h"
-#include <stdio.h>
+#include "ansi_color.h"
+#include "escape_sequence.h"
 
 void app_description(void) {
   add_new_tab();

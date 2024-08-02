@@ -1,5 +1,4 @@
-#include "./escape_sequence.h"
-#include <stdio.h>
+#include "escape_sequence.h"
 
 void app_options(int accounts_empty) {
   int exit = accounts_empty ? 2 : 7;
